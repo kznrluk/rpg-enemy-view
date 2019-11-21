@@ -2,6 +2,8 @@
 
 JavaScriptを用いたRPG風戦闘画面のプロトタイプ。
 
+[Try it out!](https://kznrluk.github.io/rpg-enemy-view/index.html)
+
 * Plain JavaScript (No Framework)
 * HTML5 Canvas
 
