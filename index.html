@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>rpg-chara-view</title>
+    <script type="module" src="./RPGCharaView/RPGCharaView.js"></script>
+    <script type="module">
+        import { RPGCharaView } from './RPGCharaView/RPGCharaView.js';
+        const view = new RPGCharaView('./green-monster.png');
+        view.render(document.getElementById('app'));
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
