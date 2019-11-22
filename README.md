@@ -14,6 +14,10 @@ JavaScriptを用いたRPG風戦闘画面のプロトタイプ。
 
 [Free Game Obstacles - Spiky Monster - Bevouliin game asset | OpenGameArt.org](https://opengameart.org/content/free-game-obstacles-spiky-monster-bevouliin-game-asset)
 
+音素材は下記からお借りしました。
+
+[『戦闘03』無料・フリー効果音素材/魔王魂](https://maoudamashii.jokersounds.com/archives/se_maoudamashii_battle03.html)
+
 ### Special Thanks
 
 [int2xx9 (int512)](https://github.com/int2xx9?)
