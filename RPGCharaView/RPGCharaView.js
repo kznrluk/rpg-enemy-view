@@ -1,3 +1,5 @@
+import { html, render } from 'https://unpkg.com/lit-html?module';
+import { styleMap } from 'https://unpkg.com/lit-html/directives/style-map.js?module';
 import { Effect } from './Effect.js';
 
 export class RPGCharaView {
@@ -13,10 +15,10 @@ export class RPGCharaView {
         this.audio = new Audio('./RPGCharaView/resource/battle.mp3');
     }
 
-    attack(isPlaySound) {
+    attack(playSound) {
         this.img.style.visibility = 'hidden';
         this.effect.renderEffect();
-        if (isPlaySound) this.audio.play();
+        if (playSound) this.audio.play();
         let i = 0;
         const intervalId = setInterval(() => {
             this.img.style.visibility = (this.img.style.visibility === 'visible') ? 'hidden' : 'visible';
@@ -31,31 +33,25 @@ export class RPGCharaView {
     render(divElement) {
         divElement.innerHTML = '';
 
-        const displayCharacters = document.createElement('div');
-        displayCharacters.style.width = this.width + 'px';
-        displayCharacters.style.height = this.height + 'px';
+        const displayStyle = {
+            width: this.width + 'px',
+            height: this.height + 'px',
+        };
 
-        const controllers = document.createElement('div');
+        let playSound = false;
+        // language=HTML
+        const applicationHTML = html`
+            <div id="displayCharacters" style="${styleMap(displayStyle)}">
+                ${this.img}
+                ${this.effect.getCanvasElement()}
+            </div>
+            <div>
+                <button @click=${() => this.attack(playSound)}>攻撃</button>
+                <input type="checkbox" id="playSound" @change=${e => playSound = e.currentTarget.checked}>
+                <lavel for="playSound">Sound</lavel>
+            </div>
+        `;
 
-        // 音選択
-        const soundCheckBox = document.createElement('input');
-        soundCheckBox.type = 'checkbox';
-        soundCheckBox.id = 'playSound';
-        const soundLabel = document.createElement('label');
-        soundLabel.textContent = 'Sound';
-        soundLabel.setAttribute('for', soundCheckBox.id);
-
-        // 攻撃ボタン
-        const attackButton = document.createElement('button');
-        attackButton.textContent = '攻撃';
-        attackButton.addEventListener('click', () => this.attack(soundCheckBox.checked));
-
-        displayCharacters.append(this.img, this.effect.getCanvasElement());
-        controllers.append(attackButton, soundCheckBox, soundLabel);
-
-        divElement.append(
-            displayCharacters,
-            controllers,
-        );
+        render(applicationHTML, divElement);
     }
 }
