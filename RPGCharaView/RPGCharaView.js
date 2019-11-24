@@ -1,4 +1,4 @@
-import { SpriteEffect } from './SpriteEffect.js';
+import { Effect } from './Effect.js';
 
 export class RPGCharaView {
     constructor(imgSrc) {
@@ -9,12 +9,11 @@ export class RPGCharaView {
         this.img.style.position = 'absolute';
         this.img.style.objectFit = 'contain';
 
-        this.effect = new SpriteEffect('./RPGCharaView/resource/effect.png', this.width, this.height);
+        this.effect = new Effect(this.width, this.height);
         this.audio = new Audio('./RPGCharaView/resource/battle.mp3');
     }
 
     attack(isPlaySound) {
-        console.log(isPlaySound)
         this.img.style.visibility = 'hidden';
         this.effect.renderEffect();
         if (isPlaySound) this.audio.play();

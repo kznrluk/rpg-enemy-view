@@ -19,8 +19,6 @@ export class SpriteEffect {
         let i = 0;
         const intervalId = setInterval(() => {
             this.ctx.clearRect(0, 0, 240, 240);
-            this.ctx.fillStyle = '#888';
-            // this.ctx.fillRect(0, 0, 200,200);
             this.ctx.drawImage(this.sprite, i*400, 0, 400, 400, -10, -10, 280, 280);
             i++;
             if (i >= 9) {
